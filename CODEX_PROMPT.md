@@ -11,25 +11,24 @@ NICHE: privacy-tools
 PRICE: $$9/mo
 
 ARCHITECTURE SPEC:
-A Next.js web app that monitors Equifax's Work Number database for salary data exposure by automating periodic checks and alerting users when their employment/salary information appears in data broker reports. Users authenticate, provide employment details, and receive automated monitoring reports via email notifications.
+A Next.js web app that monitors Equifax's Work Number database for salary data changes by automating periodic checks and alerting users when their employment/salary information is accessed or updated. Users authenticate with their employment credentials, and the system runs scheduled background jobs to detect data changes.
 
 PLANNED FILES:
 - app/page.tsx
 - app/dashboard/page.tsx
-- app/api/auth/[...nextauth]/route.ts
-- app/api/monitor/route.ts
+- app/api/auth/route.ts
+- app/api/equifax/check/route.ts
 - app/api/webhooks/lemonsqueezy/route.ts
-- components/ui/dashboard.tsx
-- components/ui/monitoring-status.tsx
-- components/ui/pricing-card.tsx
-- lib/equifax-monitor.ts
-- lib/email-service.ts
+- app/api/cron/monitor/route.ts
+- components/EquifaxConnector.tsx
+- components/AlertsPanel.tsx
+- components/DataTimeline.tsx
+- lib/equifax-client.ts
 - lib/database.ts
-- lib/lemonsqueezy.ts
+- lib/email-service.ts
 - prisma/schema.prisma
-- middleware.ts
 
-DEPENDENCIES: next, react, typescript, tailwindcss, prisma, @prisma/client, next-auth, nodemailer, @lemonsqueezy/lemonsqueezy.js, puppeteer, cheerio, cron, zod, lucide-react
+DEPENDENCIES: next, tailwindcss, prisma, @prisma/client, next-auth, @lemonsqueezy/lemonsqueezy.js, puppeteer, nodemailer, zod, lucide-react, recharts, cron
 
 REQUIREMENTS:
 - Next.js 15 with App Router (app/ directory)
@@ -70,7 +69,7 @@ approval: never
 sandbox: danger-full-access
 reasoning effort: none
 reasoning summaries: none
-session id: 019d94bd-38db-7c63-9284-a5488aea79b4
+session id: 019d94c9-50ba-7c53-9877-1a429288dbe7
 --------
 user
 # Build Task: salary-data-monitor
