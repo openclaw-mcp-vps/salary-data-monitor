@@ -1,13 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  color-scheme: dark;
+  --background: #0d1117;
+  --foreground: #e6edf3;
+  --muted: #8b949e;
 }
 
-html {
-  scroll-behavior: smooth;
+* {
+  border-color: #253041;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: radial-gradient(circle at 15% -10%, #1a2a40 0%, #0d1117 45%);
+  color: var(--foreground);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-geist-sans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 420ms ease-out both;
 }
